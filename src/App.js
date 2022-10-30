@@ -11,7 +11,7 @@ function App() {
 
   const [userChoice, setUserChoice] = useState(null)
   const [computerChoise, setComputerChoise] = useState(null)
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState('Pick Your Weapon')
   const [compCounter, setCompCounter] = useState(0)
   const [userCounter, setUserCounter] = useState(0)
   const choises = ['rock','paper','scissors']
@@ -20,6 +20,12 @@ function App() {
 const handleClick = (value)  => {
   setUserChoice(value)
   generateComputerChoise()
+}
+
+
+const resetFunc = () =>{
+  setCompCounter(0)
+  setUserCounter(0)
 }
 
 const generateComputerChoise = ()  => {
@@ -67,17 +73,18 @@ useEffect(()=> {
       <Card>
       <Card.Content>
       
-        <Card.Header>{result}</Card.Header>
-    
+        <Card.Header>{result}    <Button  floated='right' onClick={()=> {resetFunc()}}> Reset</Button></Card.Header>
+   
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
           <Button basic color='green'>
-          {compCounter}
-          </Button>
-          <Button basic color='red'>
           {userCounter}
           </Button>
+          <Button basic color='red'>
+          {compCounter}
+          </Button>
+
         </div>
       </Card.Content>
     </Card>
