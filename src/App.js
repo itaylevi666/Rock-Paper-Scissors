@@ -2,7 +2,7 @@
  
 import { useState, useEffect } from 'react';
 
-import { Message } from 'semantic-ui-react'
+import { CardDescription, CardMeta, Message } from 'semantic-ui-react'
 import { Button, Card, Image } from 'semantic-ui-react'
 
 import './App.css';
@@ -26,6 +26,10 @@ const handleClick = (value)  => {
 const resetFunc = () =>{
   setCompCounter(0)
   setUserCounter(0)
+  setResult('Pick Your Weapon')
+  setUserChoice(null)
+  setComputerChoise(null)
+  
 }
 
 const generateComputerChoise = ()  => {
@@ -63,20 +67,22 @@ useEffect(()=> {
 
   return (
     <div className="App">
-     { choises.map(choise => 
-     <Button primary onClick={()=>handleClick(choise) }>{choise}</Button>
-     )}
+ 
       <Message warning>
       <Message color = 'blue'> User choise : {userChoice} </Message>
       <Message color ='red'> Computer choise : {computerChoise}</Message>
-    
-      <Card>
+      <Card style={{margin: "auto"}}>
       <Card.Content>
-      
-        <Card.Header>{result}    <Button  floated='right' onClick={()=> {resetFunc()}}> Reset</Button></Card.Header>
+      <Card.Header>{result}   </Card.Header>
+
+        <CardDescription>      { choises.map(choise => 
+     <Button primary onClick={()=>handleClick(choise) }>{choise}</Button>
+     )}</CardDescription>
+  
    
       </Card.Content>
-      <Card.Content extra>
+
+      <Card.Content >
         <div className='ui two buttons'>
           <Button basic color='green'>
           {userCounter}
@@ -87,6 +93,7 @@ useEffect(()=> {
 
         </div>
       </Card.Content>
+      <Button  floated='right' onClick={()=> {resetFunc()}}> Reset</Button>
     </Card>
   
   <h2> </h2>
