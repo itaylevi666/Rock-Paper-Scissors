@@ -14,7 +14,7 @@ function App() {
   const [result, setResult] = useState('Pick Your Weapon')
   const [compCounter, setCompCounter] = useState(0)
   const [userCounter, setUserCounter] = useState(0)
-  const choises = ['rock','paper','scissors']
+  const choises = ['Rock','Paper','Scissors']
 
 
 const handleClick = (value)  => {
@@ -43,22 +43,22 @@ useEffect(()=> {
 
   const checkResult = () => {
     switch (userChoice + computerChoise){
-      case 'scissorspaper':
-      case 'rockscissors':
-      case 'paperrock':
+      case 'ScissorsPaper':
+      case 'RockScissors':
+      case 'PaperRock':
        setResult ('You Win')
        setUserCounter(userCounter +1 )
           break
-          case 'paperscissors':
-          case 'scissorsrock':
-          case'rockpaper':
+          case 'PaperScissors':
+          case 'ScissorsRock':
+          case'RrockPaper':
           setResult ('You  Loose')
           setCompCounter(compCounter +1 )
           
                 break
-                case 'rockrock':
-                case 'scissorsscissors':
-                case 'paperpaper':
+                case 'RockRock':
+                case 'ScissorsScissors':
+                case 'PaperPaper':
                 setResult('Its a Draw')
                 break
     }
@@ -66,7 +66,7 @@ useEffect(()=> {
 
 
   return (
-    <div className="App">
+    <div className="App" >
  
       <Message warning>
       <Message color = 'blue'> User choise : {userChoice} </Message>
@@ -96,8 +96,7 @@ useEffect(()=> {
       <Button  floated='right' onClick={()=> {resetFunc()}}> Reset</Button>
     </Card>
   
-  <h2> </h2>
-  <h2> </h2>
+ 
   </Message>
     </div>
   );
